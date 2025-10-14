@@ -1,0 +1,286 @@
+/* Reset básico e configurações globais */
+/* Definindo as variáveis do Style Guide */
+:root {
+    /* Cores Base */
+    --gray-100: #E2E4E9;
+    --gray-200: #C0C4CE;
+    --gray-300: #878EA1;
+    --gray-400: #292C34;
+    --gray-500: #16181D;
+    --gray-600: #0D0E11;
+    /* Cor de fundo principal */
+
+    /* Cores Principais (para as tags) */
+    --red: #E3646E;
+    --purple: #BB72E9;
+    --blue: #3996DB;
+    --green: #82BC4F;
+    --yellow: #EABD5F;
+
+    /* Fontes */
+    --font-title: 'Asap', sans-serif;
+    --font-subtitle: 'Inconsolata', monospace;
+    --font-text: 'Maven Pro', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1A1A1A;
+    /* Cor de fundo escura */
+    color: #E0E0E0;
+    /* Cor do texto principal */
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+
+
+/* Reset básico e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Agora usamos as variáveis! */
+    background-color: var(--gray-600);
+    color: var(--gray-100);
+    font-family: var(--font-text);
+    line-height: 1.6;
+}
+
+/* --- APRESENTAÇÃO --- */
+.apresentacao {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.apresentacao__imagem {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--purple);
+    /* Usando a cor roxa */
+    margin-bottom: 1.5rem;
+}
+
+.apresentacao__conteudo {
+    max-width: 600px;
+}
+
+.apresentacao__conteudo__ola {
+    font-family: var(--font-subtitle);
+    font-size: 20px;
+}
+
+.apresentacao__conteudo__titulo {
+    font-family: var(--font-title);
+    font-size: 56px;
+    /* Title Lg */
+    font-weight: 700;
+    /* Bold */
+    color: #FFFFFF;
+    margin: 0.5rem 0;
+}
+
+.apresentacao__conteudo__descricao {
+    font-size: 16px;
+    /* Text md */
+    line-height: 140%;
+    margin-bottom: 2rem;
+}
+
+.apresentacao__links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+/* Estilo base da tag */
+.tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-family: var(--font-subtitle);
+    font-size: 12px;
+    /* Tag Sm */
+    font-weight: 700;
+    /* Bold */
+    color: #000;
+    text-decoration: none;
+}
+
+/* Variações de cores das tags */
+.tag.tag-js {
+    background-color: var(--yellow);
+}
+
+.tag.tag-php {
+    background-color: var(--purple);
+    color: #FFF;
+}
+
+.tag.tag-css {
+    background-color: var(--blue);
+    color: #FFF;
+}
+
+.tag.tag-html {
+    background-color: var(--red);
+    color: #FFF;
+}
+
+.tag.tag-github {
+    background-color: var(--green);
+}
+
+/* --- SEÇÃO DE PROJETOS --- */
+.projects {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.projects__title {
+    font-family: var(--font-title);
+    font-size: 24px;
+    /* Title md */
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- COMPONENTE PROJECT CARD --- */
+.project-card {
+    background-color: var(--gray-400);
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.project-card__content {
+    padding: 1rem;
+}
+
+.project-card__title {
+    font-family: var(--font-title);
+    font-size: 16px;
+    /* Title sm */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.project-card__description {
+    font-size: 14px;
+    /* Text sm */
+    color: var(--gray-200);
+    margin-bottom: 1rem;
+}
+
+.project-card__tags {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Tamanho menor para as tags dentro do card */
+.tag.tag-sm {
+    font-size: 12px;
+    /* Tag Sm */
+    padding: 0.2rem 0.6rem;
+}
+
+/* --- SEÇÃO DE CONTATO --- */
+.contato {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--gray-500);
+    /* Um tom um pouco mais claro para diferenciar */
+}
+
+.contato__subtitulo {
+    font-family: var(--font-subtitle);
+    color: var(--purple);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.contato__titulo {
+    font-family: var(--font-title);
+    font-size: 24px;
+    /* Title md */
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.contato__descricao {
+    font-size: 14px;
+    color: var(--gray-200);
+    margin-bottom: 2rem;
+}
+
+.contato__links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* --- COMPONENTE SOCIAL BUTTON --- */
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: var(--gray-400);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--gray-100);
+    font-family: var(--font-text);
+    font-size: 16px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.social-button:hover {
+    border-color: var(--blue);
+}
+
+.social-button i {
+    font-size: 1.2rem;
+}
+
+.social-button span {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 1rem;
+}
