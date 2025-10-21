@@ -34,6 +34,14 @@ jobs:
       - name: Generate key
         run: php artisan key:generate
 
+      - name: Set correct APP_URL for GitHub Pages
+        run: |
+          REPO_NAME=$(echo ${{ github.event.repository.name }})
+          echo "Replacing APP_URL in .env file..."
+          sed -i "s|APP_URL=.*|APP_URL=https://$(echo ${{ github.repository_owner }}).github.io/$(echo $REPO_NAME)|" .env
+          echo "New APP_URL set:"
+          cat .env | grep APP_URL
+
       - name: Configure .env for no database
         run: |
           sed -i '/^DB_CONNECTION=/s/=.*/=null/' .env
