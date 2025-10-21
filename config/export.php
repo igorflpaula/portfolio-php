@@ -6,7 +6,7 @@ return [
      * If true, the exporter will crawl through your site's pages to determine
      * the paths that need to be exported.
      */
-    'crawl_url' => env('CRAWL_URL', config('app.url')),
+    'crawl_url' => null,
 
     'base_url' => '',
 

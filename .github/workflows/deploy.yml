@@ -21,9 +21,9 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.3"
+          php-version: '8.3'
           extensions: mbstring, dom, fileinfo, sqlite, pdo, pdo_sqlite
-
+          
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
@@ -35,15 +35,8 @@ jobs:
 
       - name: Configure .env for deploy
         run: |
-          REPO_NAME=$(echo ${{ github.event.repository.name }})
-
-          echo "Setting APP_URL to production URL for final links..."
-          sed -i "s|APP_URL=.*|APP_URL=https://$(echo ${{ github.repository_owner }}).github.io/$(echo $REPO_NAME)|" .env
-
-          echo "Setting CRAWL_URL to localhost for crawler..."
-          echo "CRAWL_URL=http://localhost" >> .env
-
-          echo "Disabling database..."
+          # Mantém a APP_URL padrão (http://localhost)
+          # Apenas desabilita o banco de dados
           sed -i '/^DB_CONNECTION=/s/=.*/=null/' .env
           echo "SESSION_DRIVER=file" >> .env
 
@@ -53,10 +46,22 @@ jobs:
       - name: Build static site
         run: php artisan export
 
+      - name: Fix asset paths for GitHub Pages
+        run: |
+          REPO_NAME=$(echo ${{ github.event.repository.name }})
+          OWNER_NAME=$(echo ${{ github.repository_owner }})
+          PROD_URL="https://$(echo $OWNER_NAME).github.io/$(echo $REPO_NAME)"
+          
+          echo "Replacing all 'http://localhost' with '$PROD_URL'"
+          
+          # Encontra todos os arquivos (html, css, js) no diretório /dist
+          # e substitui "http://localhost" pela URL de produção correta.
+          grep -rl 'http://localhost' ./dist | xargs sed -i "s|http://localhost|$PROD_URL|g"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./dist 
 
       - name: Deploy to GitHub Pages
         id: deployment
