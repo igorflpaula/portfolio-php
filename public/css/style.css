@@ -1,26 +1,20 @@
-/* Reset básico e configurações globais */
-/* Definindo as variáveis do Style Guide */
 :root {
-    /* Cores Base */
-    --gray-100: #E2E4E9;
-    --gray-200: #C0C4CE;
-    --gray-300: #878EA1;
-    --gray-400: #292C34;
-    --gray-500: #16181D;
-    --gray-600: #0D0E11;
-    /* Cor de fundo principal */
+    --gray-100: #e2e4e9;
+    --gray-200: #c0c4ce;
+    --gray-300: #878ea1;
+    --gray-400: #292c34;
+    --gray-500: #16181d;
+    --gray-600: #0d0e11;
 
-    /* Cores Principais (para as tags) */
-    --red: #E3646E;
-    --purple: #BB72E9;
-    --blue: #3996DB;
-    --green: #82BC4F;
-    --yellow: #EABD5F;
+    --red: #e3646e;
+    --purple: #bb72e9;
+    --blue: #3996db;
+    --green: #82bc4f;
+    --yellow: #eabd5f;
 
-    /* Fontes */
-    --font-title: 'Asap', sans-serif;
-    --font-subtitle: 'Inconsolata', monospace;
-    --font-text: 'Maven Pro', sans-serif;
+    --font-title: "Asap", sans-serif;
+    --font-subtitle: "Inconsolata", monospace;
+    --font-text: "Maven Pro", sans-serif;
 }
 
 * {
@@ -30,17 +24,12 @@
 }
 
 body {
-    background-color: #1A1A1A;
-    /* Cor de fundo escura */
-    color: #E0E0E0;
-    /* Cor do texto principal */
-    font-family: 'Inter', sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: "Inter", sans-serif;
     line-height: 1.6;
 }
 
-
-
-/* Reset básico e configurações globais */
 * {
     margin: 0;
     padding: 0;
@@ -48,7 +37,6 @@ body {
 }
 
 body {
-    /* Agora usamos as variáveis! */
     background-color: var(--gray-600);
     color: var(--gray-100);
     font-family: var(--font-text);
@@ -64,6 +52,34 @@ body {
     align-items: center;
     padding: 2rem;
     text-align: center;
+    background-image: url("../Background_Intro.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    background-image: url("../Background_Intro.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+}
+
+.apresentacao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.apresentacao>* {
+    position: relative;
+    z-index: 2;
 }
 
 .apresentacao__imagem {
@@ -71,7 +87,6 @@ body {
     height: 150px;
     border-radius: 50%;
     border: 3px solid var(--purple);
-    /* Usando a cor roxa */
     margin-bottom: 1.5rem;
 }
 
@@ -87,16 +102,13 @@ body {
 .apresentacao__conteudo__titulo {
     font-family: var(--font-title);
     font-size: 56px;
-    /* Title Lg */
     font-weight: 700;
-    /* Bold */
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0.5rem 0;
 }
 
 .apresentacao__conteudo__descricao {
     font-size: 16px;
-    /* Text md */
     line-height: 140%;
     margin-bottom: 2rem;
 }
@@ -114,9 +126,7 @@ body {
     border-radius: 20px;
     font-family: var(--font-subtitle);
     font-size: 12px;
-    /* Tag Sm */
     font-weight: 700;
-    /* Bold */
     color: #000;
     text-decoration: none;
 }
@@ -128,17 +138,17 @@ body {
 
 .tag.tag-php {
     background-color: var(--purple);
-    color: #FFF;
+    color: #fff;
 }
 
 .tag.tag-css {
     background-color: var(--blue);
-    color: #FFF;
+    color: #fff;
 }
 
 .tag.tag-html {
     background-color: var(--red);
-    color: #FFF;
+    color: #fff;
 }
 
 .tag.tag-github {
@@ -154,7 +164,6 @@ body {
 .projects__title {
     font-family: var(--font-title);
     font-size: 24px;
-    /* Title md */
     font-weight: 700;
     margin-bottom: 2rem;
 }
@@ -194,14 +203,12 @@ body {
 .project-card__title {
     font-family: var(--font-title);
     font-size: 16px;
-    /* Title sm */
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
 .project-card__description {
     font-size: 14px;
-    /* Text sm */
     color: var(--gray-200);
     margin-bottom: 1rem;
 }
@@ -211,10 +218,8 @@ body {
     gap: 0.5rem;
 }
 
-/* Tamanho menor para as tags dentro do card */
 .tag.tag-sm {
     font-size: 12px;
-    /* Tag Sm */
     padding: 0.2rem 0.6rem;
 }
 
@@ -223,7 +228,6 @@ body {
     padding: 4rem 2rem;
     text-align: center;
     background-color: var(--gray-500);
-    /* Um tom um pouco mais claro para diferenciar */
 }
 
 .contato__subtitulo {
@@ -236,7 +240,6 @@ body {
 .contato__titulo {
     font-family: var(--font-title);
     font-size: 24px;
-    /* Title md */
     font-weight: 700;
     margin: 0.5rem 0;
 }
@@ -255,7 +258,6 @@ body {
     margin: 0 auto;
 }
 
-/* --- COMPONENTE SOCIAL BUTTON --- */
 .social-button {
     display: flex;
     align-items: center;

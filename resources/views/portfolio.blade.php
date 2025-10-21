@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Igor de Paula - Engenheiro de Software</title>
+    <title>Igor de Paula - Portfólio</title>
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
@@ -17,11 +17,11 @@
 <body>
 
     <header class="apresentacao">
-        <img class="apresentacao__imagem" src="https://github.com/igorflpaula.png" alt="Foto de Martina Santos">
+        <img class="apresentacao__imagem" src="https://github.com/igorflpaula.png" alt="Foto de Igor de Paula">
 
         <div class="apresentacao__conteudo">
             <p class="apresentacao__conteudo__ola">Hello World! Meu nome é Igor de Paula e sou</p>
-            <h1 class="apresentacao__conteudo__titulo">Engenheiro de Software</h1>
+            <h1 class="apresentacao__conteudo__titulo">Software Engineer</h1>
             <p class="apresentacao__conteudo__descricao">
                 Transformo necessidades em aplicações reais, evolventes e funcionais. Desenvolvo sistemas através da minha paixão pela tecnologia, contribuindo com soluções inovadoras e eficazes para desafios complexos.
             </p>
