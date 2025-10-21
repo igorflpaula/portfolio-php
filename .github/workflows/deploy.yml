@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ] # Roda sempre que você atualizar a branch 'main'
+  
+  # Permite rodar este workflow manualmente pela aba "Actions" do GitHub
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3' # Use a mesma versão do seu projeto
+          extensions: mbstring, dom, fileinfo, sqlite, pdo, pdo_sqlite
+          
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Build static site
+        run: php artisan export
+        # Este comando cria a pasta /dist com seu site estático
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist # Pasta que será enviada para o GitHub Pages
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
