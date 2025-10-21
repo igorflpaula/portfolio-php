@@ -34,6 +34,11 @@ jobs:
       - name: Generate key
         run: php artisan key:generate
 
+      - name: Configure .env for no database
+        run: |
+          sed -i '/^DB_CONNECTION=/s/=.*/=null/' .env
+          echo "SESSION_DRIVER=file" >> .env
+
       - name: Build static site
         run: php artisan export
         # Este comando cria a pasta /dist com seu site estático
