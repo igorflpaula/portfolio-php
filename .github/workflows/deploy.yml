@@ -2,8 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
-  
+    branches: ["main"]
+
   workflow_dispatch:
 
 permissions:
@@ -21,9 +21,9 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: "8.3"
           extensions: mbstring, dom, fileinfo, sqlite, pdo, pdo_sqlite
-          
+
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
@@ -38,8 +38,11 @@ jobs:
           sed -i '/^DB_CONNECTION=/s/=.*/=null/' .env
           echo "SESSION_DRIVER=file" >> .env
 
+      - name: Clear Config Cache
+        run: php artisan config:clear
+
       - name: Build static site
-        run: php artisan export
+        run: php artisan export --base-url="portfolio-php"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
