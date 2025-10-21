@@ -2,7 +2,7 @@
 
 ![Status do Projeto](https://img.shields.io/badge/status-conclu%C3%ADdo-brightgreen)
 
-![Prévia do Portfólio](./screenshot.png)
+![Prévia do Portfólio](https://igorflpaula.github.io/portfolio-php/)
 
 ## 📝 Descrição
 
